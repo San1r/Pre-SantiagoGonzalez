@@ -1,0 +1,32 @@
+{% extends 'Autorizaciones/base.html' %}
+
+{% block header %}
+    Prácticas
+{% endblock header %}
+
+{% block main %}
+    <button style="display: block; margin: 20px auto;">
+        <a href="{% url 'practica_create' %}">Ingresar</a>
+    </button>
+
+    <table style="margin: 20px auto; border-collapse: collapse; text-align: center;">
+        <thead>
+            <tr>
+                <th style="padding: 8px; border: 1px solid #000;">Código</th>
+                <th style="padding: 8px; border: 1px solid #000;">Nombre</th>
+                <th style="padding: 8px; border: 1px solid #000;">Requiere Autorización</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for practica in object_list %}
+            <tr>
+                <td style="padding: 8px; border: 1px solid #000;">{{ practica.codigo }}</td>
+                <td style="padding: 8px; border: 1px solid #000;">{{ practica.nombre }}</td>
+                <td style="padding: 8px; border: 1px solid #000;">
+                    {% if practica.autorizada %}Sí{% else %}No{% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock main %}

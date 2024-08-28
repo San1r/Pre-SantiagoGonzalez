@@ -1,0 +1,24 @@
+{% extends 'Autorizaciones/base.html' %}
+
+{% block header %}
+    Afiliado: Búsqueda
+{% endblock header %}
+
+{% block main %}
+<form method="get">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Buscar</button>
+</form>
+
+{% if resultados %}
+    <h2>Resultados de la búsqueda</h2>
+    <ul>
+        {% for pedido in resultados %}
+            <li>{{ pedido.afiliado.nombre }} {{ pedido.afiliado.apellido }} - {{ pedido.practica.nombre }} ({{ pedido.estado }})</li>
+        {% endfor %}
+    </ul>
+{% elif resultados is not None %}
+    <p>No se encontraron pedidos para este afiliado.</p>
+{% endif %}
+{% endblock main %}

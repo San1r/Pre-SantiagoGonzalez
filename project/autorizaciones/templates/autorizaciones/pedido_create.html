@@ -1,0 +1,14 @@
+{% extends 'Autorizaciones/base.html' %}
+
+{% block header %}
+    Pedidos: Formulario
+{% endblock header %}
+
+{% block main %}
+<form method="post" action="{% url 'pedido_create' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Enviar</button>
+</form>
+    
+{% endblock main %}

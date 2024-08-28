@@ -1,0 +1,36 @@
+{% extends 'Autorizaciones/base.html' %}
+
+{% block header %}
+Afiliado: Registro
+{% endblock header %}
+
+{% block main %}
+<button style="display: block; margin: 20px auto;">
+    <a href="{%url 'afiliado_create' %}">Ingresar</a>
+</button>
+
+<table style="margin: 20px auto; border-collapse: collapse; text-align: center;">
+    <thead>
+        <tr>
+            <th style="padding: 8px; border: 1px solid #000;">Apellido</th>
+            <th style="padding: 8px; border: 1px solid #000;">Nombre</th>
+            <th style="padding: 8px; border: 1px solid #000;">Email</th>
+            <th style="padding: 8px; border: 1px solid #000;">DNI</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for object in object_list %}
+        <tr>
+            <td style="padding: 8px; border: 1px solid #000;">{{ object.apellido | upper }}</td>
+            <td style="padding: 8px; border: 1px solid #000;">{{ object.nombre }}</td>
+            <td style="padding: 8px; border: 1px solid #000;">{{ object.email }}</td>
+            <td style="padding: 8px; border: 1px solid #000;">{{ object.dni }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="4" style="padding: 8px; border: 1px solid #000;">No hay registros.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock main %}

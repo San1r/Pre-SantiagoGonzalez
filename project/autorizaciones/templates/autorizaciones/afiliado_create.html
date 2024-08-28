@@ -1,0 +1,14 @@
+{% extends 'Autorizaciones/base.html' %}
+
+{% block header %}
+    Afiliado: Ingreso
+{% endblock header %}
+
+{% block main %}
+<form method="post" action="{% url 'afiliado_create' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Enviar</button>
+</form>
+    
+{% endblock main %}

@@ -1,0 +1,14 @@
+{% extends 'Autorizaciones/base.html' %}
+
+{% block header %}
+    Creacion de Practicas
+{% endblock header %}
+
+{% block main %}
+<form method="post" action="{% url 'practica_create' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Enviar</button>
+</form>
+    
+{% endblock main %}
